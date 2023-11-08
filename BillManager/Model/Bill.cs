@@ -2,8 +2,8 @@
 
 public class Bill
 {
-    public string name { get; set; }
-    public string receiver { get; set; }
-    public float price { get; set; }
-    public DateOnly dueDate { get; set; }
+    public string Name { get; set; }
+    public string Receiver { get; set; }
+    public float Price { get; set; }
+    public DateOnly DueDate { get; set; }
 }

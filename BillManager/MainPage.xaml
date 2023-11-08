@@ -7,20 +7,20 @@
     <CollectionView>
         <CollectionView.ItemsSource>
             <x:Array Type="{x:Type model:Bill}">
-                <model:Bill name="Puhelinliittymä" receiver="Elisa" price="17.99"/>
-                <model:Bill name="Kotivakuutus"/>
+                <model:Bill Name="Puhelinliittymä" Receiver="Elisa" Price="17.99"/>
+                <model:Bill Name="Kotivakuutus" Receiver="If" Price="48.55"/>
             </x:Array>
         </CollectionView.ItemsSource>
         <CollectionView.ItemTemplate>
             <DataTemplate x:DataType="model:Bill">
                 <VerticalStackLayout>
                     <HorizontalStackLayout Padding="10" Spacing="10">
-                        <Label Text="{Binding name}" FontSize="24" HorizontalTextAlignment="Start"></Label>
-                        <Label Text="{Binding receiver}" FontSize="24" HorizontalTextAlignment="End"></Label>
+                        <Label Text="{Binding Name}" FontSize="24" HorizontalTextAlignment="Start" WidthRequest="200"></Label>
+                        <Label Text="{Binding Receiver}" FontSize="24" HorizontalTextAlignment="End" WidthRequest="200"></Label>
                     </HorizontalStackLayout>
                     <HorizontalStackLayout Padding="10" Spacing="10">
-                        <Label Text="{Binding price}" FontSize="12" HorizontalTextAlignment="Start"></Label>
-                        <Label Text="{Binding dueDate}" FontSize="12" HorizontalTextAlignment="End"></Label>
+                        <Label Text="{Binding Price}" FontSize="14" HorizontalTextAlignment="Start" WidthRequest="200"></Label>
+                        <Label Text="{Binding DueDate}" FontSize="14" HorizontalTextAlignment="End" WidthRequest="200"></Label>
                     </HorizontalStackLayout>
                 </VerticalStackLayout>
             </DataTemplate>
