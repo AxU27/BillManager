@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BillManager.DetailsPage"
+             xmlns:viewmodel="clr-namespace:BillManager.ViewModel"
+             x:DataType="viewmodel:BillDetailsViewModel"
+             Title="{Binding Bill.Name}">
+    <VerticalStackLayout>
+        <Grid ColumnDefinitions="*,Auto,*" RowDefinitions="*,*,*,*,*">
+            <Label 
+                Text="Payment receiver:"
+                FontSize="24"
+                Grid.Column="0"
+                Grid.Row="0"
+                HorizontalTextAlignment="Start"
+                VerticalTextAlignment="Center"
+                Padding="10"/>
+            <Label 
+                Text="{Binding Bill.Receiver}"
+                FontSize="24"
+                Grid.Column="2"
+                Grid.Row="0"
+                HorizontalTextAlignment="End"
+                VerticalTextAlignment="Center"
+                Padding="10"/>
+            <Line Grid.Row="0" Grid.ColumnSpan="3" Background="Pink" HeightRequest="5" VerticalOptions="End"/>
+            <Label 
+                Text="Payment amount:"
+                FontSize="24"
+                Grid.Column="0"
+                Grid.Row="1"
+                HorizontalTextAlignment="Start"
+                VerticalTextAlignment="Center"
+                Padding="10"/>
+            <Label 
+                Text="{Binding Bill.Price, StringFormat='{0}€'}"
+                FontSize="24"
+                Grid.Column="2"
+                Grid.Row="1"
+                HorizontalTextAlignment="End"
+                VerticalTextAlignment="Center"
+                Padding="10"/>
+            <Line Grid.Row="1" Grid.ColumnSpan="3" Background="Pink" HeightRequest="5" VerticalOptions="End"/>
+            <Label 
+                Text="Due date:"
+                FontSize="24"
+                Grid.Column="0"
+                Grid.Row="2"
+                HorizontalTextAlignment="Start"
+                VerticalTextAlignment="Center"
+                Padding="10"/>
+            <Label 
+                Text="{Binding Bill.DueDate}"
+                FontSize="24"
+                Grid.Column="2"
+                Grid.Row="2"
+                HorizontalTextAlignment="End"
+                VerticalTextAlignment="Center"
+                Padding="10"/>
+            <Line Grid.Row="2" Grid.ColumnSpan="3" Background="Pink" HeightRequest="5" VerticalOptions="End"/>
+            <Button Text="Mark as paid"
+                Grid.Row="3"
+                Grid.ColumnSpan="3"
+                Margin="5"/>
+            <Button Text="Delete bill"
+                Grid.Row="4"
+                Grid.ColumnSpan="3"
+                Margin="5"/>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

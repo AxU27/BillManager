@@ -17,7 +17,10 @@ public static class MauiProgram
             });
 
         builder.Services.AddSingleton<BillViewModel>();
+        builder.Services.AddTransient<BillDetailsViewModel>();
+
         builder.Services.AddSingleton<MainPage>();
+        builder.Services.AddTransient<DetailsPage>();
 
 #if DEBUG
         builder.Logging.AddDebug();

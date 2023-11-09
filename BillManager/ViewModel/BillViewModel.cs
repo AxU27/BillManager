@@ -20,6 +20,19 @@ namespace BillManager.ViewModel
         }
 
         [RelayCommand]
+        async Task GoToDetailsAsync(Bill bill)
+        {
+            if (bill is null)
+                return;
+
+            await Shell.Current.GoToAsync($"{nameof(DetailsPage)}", true,
+                new Dictionary<string, object>
+                {
+                    { "Bill", bill }
+                });
+        }
+
+        [RelayCommand]
         void GetBills()
         {
             if (Bills.Count > 0)
