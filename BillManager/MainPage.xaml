@@ -2,29 +2,48 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:model="clr-namespace:BillManager.Model"
+             xmlns:viewmodel="clr-namespace:BillManager.ViewModel"
+             x:DataType="viewmodel:BillViewModel"
+             Title="{Binding Title}"
              x:Class="BillManager.MainPage">
 
-    <CollectionView>
-        <CollectionView.ItemsSource>
-            <x:Array Type="{x:Type model:Bill}">
-                <model:Bill Name="Puhelinliittymä" Receiver="Elisa" Price="17.99"/>
-                <model:Bill Name="Kotivakuutus" Receiver="If" Price="48.55"/>
-            </x:Array>
-        </CollectionView.ItemsSource>
-        <CollectionView.ItemTemplate>
-            <DataTemplate x:DataType="model:Bill">
-                <VerticalStackLayout>
-                    <HorizontalStackLayout Padding="10" Spacing="10">
-                        <Label Text="{Binding Name}" FontSize="24" HorizontalTextAlignment="Start" WidthRequest="200"></Label>
-                        <Label Text="{Binding Receiver}" FontSize="24" HorizontalTextAlignment="End" WidthRequest="200"></Label>
-                    </HorizontalStackLayout>
-                    <HorizontalStackLayout Padding="10" Spacing="10">
-                        <Label Text="{Binding Price}" FontSize="14" HorizontalTextAlignment="Start" WidthRequest="200"></Label>
-                        <Label Text="{Binding DueDate}" FontSize="14" HorizontalTextAlignment="End" WidthRequest="200"></Label>
-                    </HorizontalStackLayout>
-                </VerticalStackLayout>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+    <Grid ColumnDefinitions="*,*"
+          ColumnSpacing="5"
+          RowDefinitions="*,Auto"
+          RowSpacing="0">
+
+        <CollectionView BackgroundColor="DarkSlateGray"
+                        Grid.ColumnSpan="2"
+                        ItemsSource="{Binding Bills}"
+                        SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Bill">
+                    <Grid Padding="10">
+                        <Frame HeightRequest="125">
+                            <Grid Padding="0"
+                                  ColumnDefinitions="*,*">
+                                <VerticalStackLayout Grid.RowSpan="2" Spacing="10" Padding="0">
+                                    <Label Text="{Binding Name}" FontSize="24"/>
+                                    <Label Text="{Binding Receiver}" FontSize="24"/>
+                                </VerticalStackLayout>
+                                <VerticalStackLayout Grid.RowSpan="2" Grid.Column="1">
+                                    <Label Text="{Binding Price}" FontSize="24" HorizontalTextAlignment="End"/>
+                                    <Label Text="{Binding DueDate}" FontSize="24" HorizontalTextAlignment="End"/>
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+        <Button Text="Home"
+                Command="{Binding GetBillsCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Grid.Row="1"
+                Margin="8"/>
+
+    </Grid>
 
 </ContentPage>

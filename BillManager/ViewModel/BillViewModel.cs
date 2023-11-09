@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BillManager.Model;
+using CommunityToolkit.Mvvm.Input;
 
 namespace BillManager.ViewModel
 {
@@ -15,7 +16,26 @@ namespace BillManager.ViewModel
 
         public BillViewModel()
         {
-            Title = "asd";
+            Title = "Bill Manager";
+        }
+
+        [RelayCommand]
+        void GetBills()
+        {
+            if (Bills.Count > 0)
+            {
+                Bills.Clear();
+            }
+
+            for (int i = 0; i < 5; i++)
+            {
+                Bill bill = new Bill();
+                bill.Name = "Bill " + (i + 1);
+                bill.Receiver = "Receiver " + (i + 1);
+                bill.Price = i;
+                bill.DueDate = DateOnly.FromDateTime(DateTime.Now);
+                Bills.Add(bill);
+            }
         }
     }
 }
