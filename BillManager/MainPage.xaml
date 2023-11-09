@@ -7,13 +7,13 @@
              Title="{Binding Title}"
              x:Class="BillManager.MainPage">
 
-    <Grid ColumnDefinitions="*,*"
+    <Grid ColumnDefinitions="*,*,*,*"
           ColumnSpacing="5"
           RowDefinitions="*,Auto"
           RowSpacing="0">
 
         <CollectionView BackgroundColor="DarkSlateGray"
-                        Grid.ColumnSpan="2"
+                        Grid.ColumnSpan="4"
                         ItemsSource="{Binding Bills}"
                         SelectionMode="None">
             <CollectionView.ItemTemplate>
@@ -43,6 +43,13 @@
                 IsEnabled="{Binding IsNotBusy}"
                 Grid.Row="1"
                 Margin="8"/>
+
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           Grid.RowSpan="2"
+                           Grid.ColumnSpan="4"/>
 
     </Grid>
 
